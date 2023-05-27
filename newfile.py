@@ -9,11 +9,10 @@ import time
 
 from time import sleep
 
+
 import random
 
-
 import requests
-import openai
 from pyrogram import enums
 
 api_id = 11296923

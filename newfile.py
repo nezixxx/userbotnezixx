@@ -18,7 +18,7 @@ from pyrogram import enums
 api_id = 11296923
 
 api_hash = "8ac3fa9ce8721453e48f528039bb7781"
-openai.api_key = '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'
+
 
 app = Client("my_account", api_id=api_id, api_hash=api_hash)
 
@@ -63,15 +63,7 @@ def thanos(_, msg):
     	msg.delete()
     	app.send_message(msg.chat.id, f"{member.user.id} | @{member.user.username} | <a href='tg://user?id={member.user.id}'>{member.user.first_name}</a>", parse_mode=enums.ParseMode.HTML)
     	
-@app.on_message(filters.command("gen", prefixes="."))
-def png(_, msg):
-	query = " ".join(msg.text.split()[1:])
-	response = openai.Image.create(prompt=query, n=1, size="1024x1024")
-	image_url = response['data'][0]['url']
-	print(image_url)
-	response = requests.get(image_url)
-	image_bytes = response.content
-	app.send_photo(msg.chat.id, image_bytes)
+
 
 @app.on_message(filters.command("пинг", prefixes="."))
 def ping_pong(client, msg):
